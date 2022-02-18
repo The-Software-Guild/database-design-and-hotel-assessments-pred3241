@@ -1,1 +1,60 @@
+Car Dealership Database
+
+The purpose of this database is to store the customers orders in a car dealership that sells electric vehicles of different makes like Ford, GM and Tesla. The dealership follows a manufacturing principle wherein the manufacturing process starts after the customer has placed an order.
+The requirements of this database are as follows:
+1.	Every brand of car has multiple car models in them.
+2.	Every car has a model number and a unique identification number.
+3.	Every car has unique order number and manufacturing details.
+
+List of entities:
+1.	Customer: To store customer details
+
+Attributes: CustomerID INT(10) (PK)     
+                    FirstName VARCHAR(50)
+                    LastName VARCHAR(50)
+                    Phone no. CHAR(10)
+                   EmailAddress VARCHAR(250)
+
+2.	Dealership: To store dealership details
+
+Attributes: DealershipID INT(10) (PK)     
+                    DealershipName VARCHAR(250)
+                    City VARCHAR(25)
+                    Pincode CHAR(6)
+
+3.	OrderSummary: Since multiple customers can place an order at multiple dealership we create a bridge entity called OrderSummary. 
+Attributes: CustomerID INT(10) (PK), (FK1)
+                     DealershipID INT(10) (PK),(FK2)
+
+4.	Car: Each Order will have a make of car associated with it. 
+
+Attributes: CarID INT(10) (PK)
+                    ModelName VARCHAR(50)
+                    ModelNumber INT(16)
+                    ManufacturerID INT(10) (FK)
+
+
+                    
+                    
+5.	Manufacturer: To store details of manufacturing.
+
+Attributes: ManufacturerID INT(10) (PK)
+                     ManufacturerName VARCHAR(25)
+                     City VARCHAR(50)
+                     Pincode CHAR(6)
+                     OrderStatusID INT(10)
+                     ManufacturingDate TIMESTAMP
+                     Weight in kgs DECIMAL(6,2)
+
+6.	ManufacturingProcess: To store individual manufacturing process details like painting, assembly, QA etc.
+
+Attributes: ProcessID INT(10) (PK)
+                    ProcessName VARCHAR(50)
+                    IsFinished CHAR(1)   [‘y’ or ‘n’]
+                    
+7.	OrderStatus: Since multiple manufacturers have multiple manufacturing processes we create a bridge entity called OrderStatus
+
+Attributes: ManufacturingID INT(10) (PK), (FK1)
+                     ProcessID INT(10) (PK),(FK2)
+                    
 
